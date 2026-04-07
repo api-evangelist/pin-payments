@@ -1,8 +1,8 @@
 aid: pin-payments
 name: Pin Payments
 description: >-
-  A complete payments solution, built for speed and simplicity around your
-  unique business needs. 
+  A complete payments solution, built for speed and simplicity around your unique
+  business needs.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -18,8 +18,8 @@ apis:
   - aid: pin-payments:pin-payments
     name: Pin Payments
     description: >-
-      A complete payments solution, built for speed and simplicity around your
-      unique business needs. 
+      A complete payments solution, built for speed and simplicity around your unique
+      business needs.
     humanURL: ' https://pinpayments.com/'
     tags:
       - API
