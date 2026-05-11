@@ -57,6 +57,20 @@ common:
     url: https://pinpayments.com/legals/terms-of-use
   - type: PrivacyPolicy
     url: https://pinpayments.com/legals/privacy-policy
+  - type: Integrations
+    url: https://pinpayments.com/integrations
+integrations:
+  - name: Shopping Carts
+  - name: Bookings
+  - name: Ticketing
+  - name: Point of Sale
+  - name: Accounting
+  - name: Invoicing
+  - name: Subscriptions
+  - name: Other
+  - name: Hikashop Ecommerce solution for Joomla sites.
+  - name: OpenCart Free open source ecommerce software.
+  - name: SimplySwim Swim school management software.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
