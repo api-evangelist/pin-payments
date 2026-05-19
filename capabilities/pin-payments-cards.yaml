@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Pin Payments API — Cards
+  description: 'Pin Payments API — Cards. 2 operations. Lead operation: Tokenize a card. Self-contained Naftiko capability
+    covering one Pin Payments business surface.'
+  tags:
+  - Pin Payments
+  - Cards
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    PIN_PAYMENTS_API_KEY: PIN_PAYMENTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: pin-payments-cards
+    baseUri: https://api.pinpayments.com/1
+    description: Pin Payments API — Cards business capability. Self-contained, no shared references.
+    resources:
+    - name: cards
+      path: /cards
+      operations:
+      - name: post
+        method: POST
+        description: Tokenize a card
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: cards-card_token
+      path: /cards/{card_token}
+      operations:
+      - name: get
+        method: GET
+        description: Retrieve a card
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: card_token
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.PIN_PAYMENTS_USER}}'
+      password: '{{env.PIN_PAYMENTS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: pin-payments-cards-rest
+    port: 8080
+    description: REST adapter for Pin Payments API — Cards. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/cards
+      name: cards
+      description: REST surface for cards.
+      operations:
+      - method: POST
+        name: post
+        description: Tokenize a card
+        call: pin-payments-cards.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cards/{card-token}
+      name: cards-card-token
+      description: REST surface for cards-card_token.
+      operations:
+      - method: GET
+        name: get
+        description: Retrieve a card
+        call: pin-payments-cards.get
+        with:
+          card_token: rest.card_token
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: pin-payments-cards-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Pin Payments API — Cards. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: tokenize-card
+      description: Tokenize a card
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: pin-payments-cards.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-card
+      description: Retrieve a card
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pin-payments-cards.get
+      with:
+        card_token: tools.card_token
+      outputParameters:
+      - type: object
+        mapping: $.
