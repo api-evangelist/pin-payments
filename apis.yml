@@ -35,13 +35,13 @@ apis:
       url: https://pinpayments.com/developers/api-reference
     - type: OpenAPI
       url: https://raw.githubusercontent.com/api-evangelist/pin-payments/refs/heads/main/openapi/pin-payments-openapi.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/pin-payments-cards.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/pin-payments-charges.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/pin-payments-customers.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/pin-payments-refunds.yaml
 common:
   - type: GitHubOrganization
@@ -54,7 +54,7 @@ common:
     url: https://pinpayments.com/developers/api-reference
   - type: Pricing
     url: https://pinpayments.com/pricing
-  - type: SignUp
+  - type: Signup
     url: https://dashboard.pinpayments.com/sign_up
   - type: Login
     url: https://dashboard.pinpayments.com/sign_in
