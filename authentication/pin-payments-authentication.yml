@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/pin-payments-openapi.yaml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic with the API key as the username and an empty password.
+  sources:
+  - openapi/pin-payments-openapi.yaml

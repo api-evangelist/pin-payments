@@ -44,6 +44,10 @@ apis:
     - type: X-NaftikoCapability
       url: capabilities/pin-payments-refunds.yaml
 common:
+  - type: DomainSecurity
+    url: security/pin-payments-domain-security.yml
+  - type: Authentication
+    url: authentication/pin-payments-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/pinpayments
   - type: LinkedIn
@@ -64,6 +68,8 @@ common:
     url: https://pinpayments.com/legals/privacy-policy
   - type: Integrations
     url: https://pinpayments.com/integrations
+  - type: Blog
+    url: https://pinpayments.com/blog
 integrations:
   - name: Shopping Carts
   - name: Bookings
