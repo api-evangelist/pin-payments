@@ -44,6 +44,8 @@ apis:
     - type: X-NaftikoCapability
       url: capabilities/pin-payments-refunds.yaml
 common:
+  - type: AgenticAccess
+    url: agentic-access/pin-payments-agentic-access.yml
   - type: DomainSecurity
     url: security/pin-payments-domain-security.yml
   - type: Authentication
