@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: Pin Payments Cards Refunds API
+  description: A complete payments solution, built for speed and simplicity. The Pin Payments API enables you to charge cards, manage customers, issue refunds, store cards, and run subscriptions.
+  version: '1.0'
+  contact:
+    name: Pin Payments
+    url: https://pinpayments.com/developers/api-reference
+servers:
+- url: https://api.pinpayments.com/1
+  description: Live
+- url: https://test-api.pinpayments.com/1
+  description: Test
+security:
+- basicAuth: []
+tags:
+- name: Refunds
+  description: Issue and inspect refunds against charges.
+paths:
+  /charges/{charge_token}/refunds:
+    get:
+      tags:
+      - Refunds
+      summary: List refunds for a charge
+      parameters:
+      - $ref: '#/components/parameters/ChargeToken'
+      responses:
+        '200':
+          description: A list of refunds for the charge
+    post:
+      tags:
+      - Refunds
+      summary: Create a refund
+      parameters:
+      - $ref: '#/components/parameters/ChargeToken'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  description: Refund amount in base currency units. Defaults to the full charge amount.
+      responses:
+        '201':
+          description: Refund created
+  /refunds:
+    get:
+      tags:
+      - Refunds
+      summary: List refunds
+      responses:
+        '200':
+          description: A paginated list of refunds
+  /refunds/{refund_token}:
+    get:
+      tags:
+      - Refunds
+      summary: Retrieve a refund
+      parameters:
+      - in: path
+        name: refund_token
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Refund details
+components:
+  parameters:
+    ChargeToken:
+      in: path
+      name: charge_token
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with the API key as the username and an empty password.

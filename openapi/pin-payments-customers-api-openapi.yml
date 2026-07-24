@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: Pin Payments Cards Customers API
+  description: A complete payments solution, built for speed and simplicity. The Pin Payments API enables you to charge cards, manage customers, issue refunds, store cards, and run subscriptions.
+  version: '1.0'
+  contact:
+    name: Pin Payments
+    url: https://pinpayments.com/developers/api-reference
+servers:
+- url: https://api.pinpayments.com/1
+  description: Live
+- url: https://test-api.pinpayments.com/1
+  description: Test
+security:
+- basicAuth: []
+tags:
+- name: Customers
+  description: Store customer profiles with payment sources for repeat billing.
+paths:
+  /customers:
+    post:
+      tags:
+      - Customers
+      summary: Create a customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        '201':
+          description: Customer created
+    get:
+      tags:
+      - Customers
+      summary: List customers
+      responses:
+        '200':
+          description: A paginated list of customers
+  /customers/{customer_token}:
+    get:
+      tags:
+      - Customers
+      summary: Retrieve a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: Customer details
+    put:
+      tags:
+      - Customers
+      summary: Update a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: Customer updated
+    delete:
+      tags:
+      - Customers
+      summary: Delete a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '204':
+          description: Customer deleted
+  /customers/{customer_token}/charges:
+    get:
+      tags:
+      - Customers
+      summary: List charges for a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: A paginated list of charges
+  /customers/{customer_token}/cards:
+    get:
+      tags:
+      - Customers
+      summary: List cards for a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: A paginated list of cards
+    post:
+      tags:
+      - Customers
+      summary: Add a card to a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '201':
+          description: Card added
+  /customers/{customer_token}/cards/{card_token}:
+    delete:
+      tags:
+      - Customers
+      summary: Remove a non-primary card from a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      - in: path
+        name: card_token
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Card removed
+  /customers/{customer_token}/subscriptions:
+    get:
+      tags:
+      - Customers
+      summary: List subscriptions for a customer
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: A paginated list of subscriptions
+  /customers/{customer_token}/subscriptions/{sub_token}:
+    delete:
+      tags:
+      - Customers
+      summary: Cancel a customer subscription
+      parameters:
+      - $ref: '#/components/parameters/CustomerToken'
+      - in: path
+        name: sub_token
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Subscription cancelled
+components:
+  schemas:
+    CustomerCreate:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          format: email
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone_number:
+          type: string
+        company:
+          type: string
+        notes:
+          type: string
+        card:
+          type: object
+        card_token:
+          type: string
+  parameters:
+    CustomerToken:
+      in: path
+      name: customer_token
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with the API key as the username and an empty password.

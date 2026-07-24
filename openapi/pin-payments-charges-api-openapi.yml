@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: Pin Payments Cards Charges API
+  description: A complete payments solution, built for speed and simplicity. The Pin Payments API enables you to charge cards, manage customers, issue refunds, store cards, and run subscriptions.
+  version: '1.0'
+  contact:
+    name: Pin Payments
+    url: https://pinpayments.com/developers/api-reference
+servers:
+- url: https://api.pinpayments.com/1
+  description: Live
+- url: https://test-api.pinpayments.com/1
+  description: Test
+security:
+- basicAuth: []
+tags:
+- name: Charges
+  description: Create and manage charges against cards or customers.
+paths:
+  /charges:
+    post:
+      tags:
+      - Charges
+      summary: Create a charge
+      description: Creates a new charge and returns its details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChargeCreate'
+      responses:
+        '201':
+          description: Charge created
+    get:
+      tags:
+      - Charges
+      summary: List charges
+      description: Returns a paginated list of all charges.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: A paginated list of charges
+  /charges/search:
+    get:
+      tags:
+      - Charges
+      summary: Search charges
+      description: Returns a paginated list of charges matching the search criteria.
+      parameters:
+      - in: query
+        name: query
+        schema:
+          type: string
+      - in: query
+        name: start_date
+        schema:
+          type: string
+          format: date
+      - in: query
+        name: end_date
+        schema:
+          type: string
+          format: date
+      - in: query
+        name: sort
+        schema:
+          type: string
+          enum:
+          - created_at
+          - amount
+      - in: query
+        name: direction
+        schema:
+          type: integer
+          enum:
+          - 1
+          - -1
+      responses:
+        '200':
+          description: A paginated list of matching charges
+  /charges/{charge_token}:
+    get:
+      tags:
+      - Charges
+      summary: Retrieve a charge
+      parameters:
+      - $ref: '#/components/parameters/ChargeToken'
+      responses:
+        '200':
+          description: Charge details
+  /charges/{charge_token}/void:
+    put:
+      tags:
+      - Charges
+      summary: Void an authorized charge
+      parameters:
+      - $ref: '#/components/parameters/ChargeToken'
+      responses:
+        '200':
+          description: Charge voided
+  /charges/{charge_token}/capture:
+    put:
+      tags:
+      - Charges
+      summary: Capture a previously authorized charge
+      parameters:
+      - $ref: '#/components/parameters/ChargeToken'
+      responses:
+        '200':
+          description: Charge captured
+  /charges/verify:
+    get:
+      tags:
+      - Charges
+      summary: Verify a 3D Secure result
+      parameters:
+      - in: query
+        name: session_token
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Verification result
+components:
+  parameters:
+    ChargeToken:
+      in: path
+      name: charge_token
+      required: true
+      schema:
+        type: string
+    PerPage:
+      in: query
+      name: per_page
+      schema:
+        type: integer
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+  schemas:
+    ChargeCreate:
+      type: object
+      required:
+      - email
+      - description
+      - amount
+      - ip_address
+      properties:
+        email:
+          type: string
+          format: email
+        description:
+          type: string
+        amount:
+          type: integer
+        ip_address:
+          type: string
+        currency:
+          type: string
+          default: AUD
+        capture:
+          type: boolean
+          default: true
+        reference:
+          type: string
+        card:
+          type: object
+        card_token:
+          type: string
+        customer_token:
+          type: string
+        payment_source_token:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+        three_d_secure:
+          type: object
+        platform_adjustment:
+          type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with the API key as the username and an empty password.

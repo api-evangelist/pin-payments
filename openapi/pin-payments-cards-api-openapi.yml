@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: Pin Payments Cards API
+  description: A complete payments solution, built for speed and simplicity. The Pin Payments API enables you to charge cards, manage customers, issue refunds, store cards, and run subscriptions.
+  version: '1.0'
+  contact:
+    name: Pin Payments
+    url: https://pinpayments.com/developers/api-reference
+servers:
+- url: https://api.pinpayments.com/1
+  description: Live
+- url: https://test-api.pinpayments.com/1
+  description: Test
+security:
+- basicAuth: []
+tags:
+- name: Cards
+  description: Tokenize and retrieve stored card details.
+paths:
+  /cards:
+    post:
+      tags:
+      - Cards
+      summary: Tokenize a card
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardCreate'
+      responses:
+        '201':
+          description: Card tokenized
+  /cards/{card_token}:
+    get:
+      tags:
+      - Cards
+      summary: Retrieve a card
+      parameters:
+      - in: path
+        name: card_token
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Card details
+components:
+  schemas:
+    CardCreate:
+      type: object
+      required:
+      - number
+      - expiry_month
+      - expiry_year
+      - cvc
+      - name
+      - address_line1
+      - address_city
+      - address_country
+      properties:
+        publishable_api_key:
+          type: string
+        number:
+          type: string
+        expiry_month:
+          type: string
+        expiry_year:
+          type: string
+        cvc:
+          type: string
+        name:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_postcode:
+          type: string
+        address_state:
+          type: string
+        address_country:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with the API key as the username and an empty password.
