@@ -1,0 +1,20 @@
+{
+  "provider": "pin-payments",
+  "sources": [
+    "pin-payments-cards-api-openapi.yml",
+    "pin-payments-charges-api-openapi.yml",
+    "pin-payments-customers-api-openapi.yml",
+    "pin-payments-refunds-api-openapi.yml"
+  ],
+  "outputs": [
+    "pin-payments-cards-api-openapi.yml",
+    "pin-payments-charges-api-openapi.yml",
+    "pin-payments-customers-api-openapi.yml",
+    "pin-payments-refunds-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

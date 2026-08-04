@@ -1,0 +1,359 @@
+openapi: 3.0.3
+info:
+  title: Pin Payments API
+  description: A complete payments solution, built for speed and simplicity. The Pin Payments API enables you to charge cards, manage customers, issue refunds, store cards, and run subscriptions.
+  version: "1.0"
+  contact:
+    name: Pin Payments
+    url: https://pinpayments.com/developers/api-reference
+servers:
+  - url: https://api.pinpayments.com/1
+    description: Live
+  - url: https://test-api.pinpayments.com/1
+    description: Test
+security:
+  - basicAuth: []
+tags:
+  - name: Charges
+    description: Create and manage charges against cards or customers.
+  - name: Customers
+    description: Store customer profiles with payment sources for repeat billing.
+  - name: Cards
+    description: Tokenize and retrieve stored card details.
+  - name: Refunds
+    description: Issue and inspect refunds against charges.
+paths:
+  /charges:
+    post:
+      tags: [Charges]
+      summary: Create a charge
+      description: Creates a new charge and returns its details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChargeCreate'
+      responses:
+        '201':
+          description: Charge created
+    get:
+      tags: [Charges]
+      summary: List charges
+      description: Returns a paginated list of all charges.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: A paginated list of charges
+  /charges/search:
+    get:
+      tags: [Charges]
+      summary: Search charges
+      description: Returns a paginated list of charges matching the search criteria.
+      parameters:
+        - in: query
+          name: query
+          schema: { type: string }
+        - in: query
+          name: start_date
+          schema: { type: string, format: date }
+        - in: query
+          name: end_date
+          schema: { type: string, format: date }
+        - in: query
+          name: sort
+          schema: { type: string, enum: [created_at, amount] }
+        - in: query
+          name: direction
+          schema: { type: integer, enum: [1, -1] }
+      responses:
+        '200':
+          description: A paginated list of matching charges
+  /charges/{charge_token}:
+    get:
+      tags: [Charges]
+      summary: Retrieve a charge
+      parameters:
+        - $ref: '#/components/parameters/ChargeToken'
+      responses:
+        '200':
+          description: Charge details
+  /charges/{charge_token}/void:
+    put:
+      tags: [Charges]
+      summary: Void an authorized charge
+      parameters:
+        - $ref: '#/components/parameters/ChargeToken'
+      responses:
+        '200':
+          description: Charge voided
+  /charges/{charge_token}/capture:
+    put:
+      tags: [Charges]
+      summary: Capture a previously authorized charge
+      parameters:
+        - $ref: '#/components/parameters/ChargeToken'
+      responses:
+        '200':
+          description: Charge captured
+  /charges/verify:
+    get:
+      tags: [Charges]
+      summary: Verify a 3D Secure result
+      parameters:
+        - in: query
+          name: session_token
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Verification result
+  /charges/{charge_token}/refunds:
+    get:
+      tags: [Refunds]
+      summary: List refunds for a charge
+      parameters:
+        - $ref: '#/components/parameters/ChargeToken'
+      responses:
+        '200':
+          description: A list of refunds for the charge
+    post:
+      tags: [Refunds]
+      summary: Create a refund
+      parameters:
+        - $ref: '#/components/parameters/ChargeToken'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  description: Refund amount in base currency units. Defaults to the full charge amount.
+      responses:
+        '201':
+          description: Refund created
+  /refunds:
+    get:
+      tags: [Refunds]
+      summary: List refunds
+      responses:
+        '200':
+          description: A paginated list of refunds
+  /refunds/{refund_token}:
+    get:
+      tags: [Refunds]
+      summary: Retrieve a refund
+      parameters:
+        - in: path
+          name: refund_token
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Refund details
+  /customers:
+    post:
+      tags: [Customers]
+      summary: Create a customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+      responses:
+        '201':
+          description: Customer created
+    get:
+      tags: [Customers]
+      summary: List customers
+      responses:
+        '200':
+          description: A paginated list of customers
+  /customers/{customer_token}:
+    get:
+      tags: [Customers]
+      summary: Retrieve a customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: Customer details
+    put:
+      tags: [Customers]
+      summary: Update a customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: Customer updated
+    delete:
+      tags: [Customers]
+      summary: Delete a customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '204':
+          description: Customer deleted
+  /customers/{customer_token}/charges:
+    get:
+      tags: [Customers]
+      summary: List charges for a customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: A paginated list of charges
+  /customers/{customer_token}/cards:
+    get:
+      tags: [Customers]
+      summary: List cards for a customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: A paginated list of cards
+    post:
+      tags: [Customers]
+      summary: Add a card to a customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '201':
+          description: Card added
+  /customers/{customer_token}/cards/{card_token}:
+    delete:
+      tags: [Customers]
+      summary: Remove a non-primary card from a customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+        - in: path
+          name: card_token
+          required: true
+          schema: { type: string }
+      responses:
+        '204':
+          description: Card removed
+  /customers/{customer_token}/subscriptions:
+    get:
+      tags: [Customers]
+      summary: List subscriptions for a customer
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+      responses:
+        '200':
+          description: A paginated list of subscriptions
+  /customers/{customer_token}/subscriptions/{sub_token}:
+    delete:
+      tags: [Customers]
+      summary: Cancel a customer subscription
+      parameters:
+        - $ref: '#/components/parameters/CustomerToken'
+        - in: path
+          name: sub_token
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Subscription cancelled
+  /cards:
+    post:
+      tags: [Cards]
+      summary: Tokenize a card
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardCreate'
+      responses:
+        '201':
+          description: Card tokenized
+  /cards/{card_token}:
+    get:
+      tags: [Cards]
+      summary: Retrieve a card
+      parameters:
+        - in: path
+          name: card_token
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Card details
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic with the API key as the username and an empty password.
+  parameters:
+    Page:
+      in: query
+      name: page
+      schema: { type: integer }
+    PerPage:
+      in: query
+      name: per_page
+      schema: { type: integer }
+    ChargeToken:
+      in: path
+      name: charge_token
+      required: true
+      schema: { type: string }
+    CustomerToken:
+      in: path
+      name: customer_token
+      required: true
+      schema: { type: string }
+  schemas:
+    ChargeCreate:
+      type: object
+      required: [email, description, amount, ip_address]
+      properties:
+        email: { type: string, format: email }
+        description: { type: string }
+        amount: { type: integer }
+        ip_address: { type: string }
+        currency: { type: string, default: AUD }
+        capture: { type: boolean, default: true }
+        reference: { type: string }
+        card: { type: object }
+        card_token: { type: string }
+        customer_token: { type: string }
+        payment_source_token: { type: string }
+        metadata: { type: object, additionalProperties: true }
+        three_d_secure: { type: object }
+        platform_adjustment: { type: object }
+    CustomerCreate:
+      type: object
+      required: [email]
+      properties:
+        email: { type: string, format: email }
+        first_name: { type: string }
+        last_name: { type: string }
+        phone_number: { type: string }
+        company: { type: string }
+        notes: { type: string }
+        card: { type: object }
+        card_token: { type: string }
+    CardCreate:
+      type: object
+      required: [number, expiry_month, expiry_year, cvc, name, address_line1, address_city, address_country]
+      properties:
+        publishable_api_key: { type: string }
+        number: { type: string }
+        expiry_month: { type: string }
+        expiry_year: { type: string }
+        cvc: { type: string }
+        name: { type: string }
+        address_line1: { type: string }
+        address_line2: { type: string }
+        address_city: { type: string }
+        address_postcode: { type: string }
+        address_state: { type: string }
+        address_country: { type: string }

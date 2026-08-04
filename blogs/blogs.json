@@ -2,11 +2,11 @@
   "repo": "pin-payments",
   "feeds": [
     {
-      "source": "https://pinpayments.com/blog",
+      "source": "https://pinpayments.com/blog.atom",
       "feed_url": "https://pinpayments.com/blog.atom",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "feed"
     },
     {
       "source": "https://pinpayments.com/integrations",
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-07-11T11:50:51Z",
-  "post_count": 10
+  "fetched": "2026-08-01T15:49:00Z",
+  "post_count": 53
 }
