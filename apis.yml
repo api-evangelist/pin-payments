@@ -42,14 +42,6 @@ apis:
     url: openapi/pin-payments-cards-api-openapi.yml
   - type: Documentation
     url: https://pinpayments.com/developers/api-reference
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-cards.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-charges.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-customers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-refunds.yaml
 - aid: pin-payments:pin-payments-charges-api
   name: Pin Payments Charges API
   description: Create and manage charges against cards or customers.
@@ -62,14 +54,6 @@ apis:
     url: openapi/pin-payments-charges-api-openapi.yml
   - type: Documentation
     url: https://pinpayments.com/developers/api-reference
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-cards.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-charges.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-customers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-refunds.yaml
 - aid: pin-payments:pin-payments-customers-api
   name: Pin Payments Customers API
   description: Store customer profiles with payment sources for repeat billing.
@@ -82,14 +66,6 @@ apis:
     url: openapi/pin-payments-customers-api-openapi.yml
   - type: Documentation
     url: https://pinpayments.com/developers/api-reference
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-cards.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-charges.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-customers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-refunds.yaml
 - aid: pin-payments:pin-payments-refunds-api
   name: Pin Payments Refunds API
   description: Issue and inspect refunds against charges.
@@ -102,14 +78,6 @@ apis:
     url: openapi/pin-payments-refunds-api-openapi.yml
   - type: Documentation
     url: https://pinpayments.com/developers/api-reference
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-cards.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-charges.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-customers.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/pin-payments-refunds.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/pin-payments-agentic-access.yml
