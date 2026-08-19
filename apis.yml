@@ -28,7 +28,7 @@ tags:
 created: '2025-02-17'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/pin-payments/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: pin-payments:pin-payments-cards-api
   name: Pin Payments Cards API
