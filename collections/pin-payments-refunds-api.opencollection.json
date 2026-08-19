@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pin Payments Cards Refunds API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List refunds for a charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/charges/:charge_token/refunds",
+            "params": [
+              {
+                "name": "charge_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List refunds for a charge"
+        },
+        {
+          "info": {
+            "name": "Create a refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pinpayments.com/1/charges/:charge_token/refunds",
+            "params": [
+              {
+                "name": "charge_token",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a refund"
+        },
+        {
+          "info": {
+            "name": "List refunds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/refunds"
+          },
+          "docs": "List refunds"
+        },
+        {
+          "info": {
+            "name": "Retrieve a refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/refunds/:refund_token",
+            "params": [
+              {
+                "name": "refund_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a refund"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

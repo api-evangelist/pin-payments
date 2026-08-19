@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pin Payments Cards API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Tokenize a card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pinpayments.com/1/cards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Tokenize a card"
+        },
+        {
+          "info": {
+            "name": "Retrieve a card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/cards/:card_token",
+            "params": [
+              {
+                "name": "card_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a card"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

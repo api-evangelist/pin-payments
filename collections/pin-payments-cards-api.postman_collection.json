@@ -1,0 +1,216 @@
+{
+  "item": [
+    {
+      "id": "abaccae6-4118-4442-a629-e4254c68239f",
+      "name": "Cards",
+      "description": {
+        "content": "Tokenize and retrieve stored card details.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92931312-30d6-4acb-952d-3a2d46cd93fe",
+          "name": "Tokenize a card",
+          "request": {
+            "name": "Tokenize a card",
+            "description": {},
+            "url": {
+              "path": [
+                "cards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"<string>\",\n  \"expiry_month\": \"<string>\",\n  \"expiry_year\": \"<string>\",\n  \"cvc\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_country\": \"<string>\",\n  \"publishable_api_key\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_postcode\": \"<string>\",\n  \"address_state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6cf01cb0-0511-44c2-b630-cc8f1f9e2554",
+              "name": "Card tokenized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"number\": \"<string>\",\n  \"expiry_month\": \"<string>\",\n  \"expiry_year\": \"<string>\",\n  \"cvc\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_country\": \"<string>\",\n  \"publishable_api_key\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_postcode\": \"<string>\",\n  \"address_state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8846c3b0-731a-4534-8018-0e437858d25e",
+          "name": "Retrieve a card",
+          "request": {
+            "name": "Retrieve a card",
+            "description": {},
+            "url": {
+              "path": [
+                "cards",
+                ":card_token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "card_token",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2035869-a96e-4787-80bf-bdd3f2765be8",
+              "name": "Card details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cards",
+                    ":card_token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "card_token",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pinpayments.com/1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78b99c02-477e-4163-8a68-a810365ad1c1",
+    "name": "Pin Payments Cards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A complete payments solution, built for speed and simplicity. The Pin Payments API enables you to charge cards, manage customers, issue refunds, store cards, and run subscriptions.\n\nContact Support:\n Name: Pin Payments",
+      "type": "text/plain"
+    }
+  }
+}

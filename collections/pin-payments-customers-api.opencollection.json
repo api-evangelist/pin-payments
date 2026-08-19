@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pin Payments Cards Customers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/customers"
+          },
+          "docs": "List customers"
+        },
+        {
+          "info": {
+            "name": "Create a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pinpayments.com/1/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a customer"
+        },
+        {
+          "info": {
+            "name": "Retrieve a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a customer"
+        },
+        {
+          "info": {
+            "name": "Update a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a customer"
+        },
+        {
+          "info": {
+            "name": "Delete a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a customer"
+        },
+        {
+          "info": {
+            "name": "List charges for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token/charges",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List charges for a customer"
+        },
+        {
+          "info": {
+            "name": "List cards for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token/cards",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List cards for a customer"
+        },
+        {
+          "info": {
+            "name": "Add a card to a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token/cards",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add a card to a customer"
+        },
+        {
+          "info": {
+            "name": "Remove a non-primary card from a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token/cards/:card_token",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "card_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a non-primary card from a customer"
+        },
+        {
+          "info": {
+            "name": "List subscriptions for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token/subscriptions",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List subscriptions for a customer"
+        },
+        {
+          "info": {
+            "name": "Cancel a customer subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pinpayments.com/1/customers/:customer_token/subscriptions/:sub_token",
+            "params": [
+              {
+                "name": "customer_token",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sub_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel a customer subscription"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

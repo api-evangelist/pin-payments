@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pin Payments Cards Charges API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Charges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List charges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/charges",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all charges."
+        },
+        {
+          "info": {
+            "name": "Create a charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pinpayments.com/1/charges",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new charge and returns its details."
+        },
+        {
+          "info": {
+            "name": "Search charges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/charges/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of charges matching the search criteria."
+        },
+        {
+          "info": {
+            "name": "Retrieve a charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/charges/:charge_token",
+            "params": [
+              {
+                "name": "charge_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a charge"
+        },
+        {
+          "info": {
+            "name": "Void an authorized charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pinpayments.com/1/charges/:charge_token/void",
+            "params": [
+              {
+                "name": "charge_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Void an authorized charge"
+        },
+        {
+          "info": {
+            "name": "Capture a previously authorized charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pinpayments.com/1/charges/:charge_token/capture",
+            "params": [
+              {
+                "name": "charge_token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Capture a previously authorized charge"
+        },
+        {
+          "info": {
+            "name": "Verify a 3D Secure result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pinpayments.com/1/charges/verify",
+            "params": [
+              {
+                "name": "session_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Verify a 3D Secure result"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
