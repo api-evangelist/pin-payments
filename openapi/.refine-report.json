@@ -1,10 +1,7 @@
 {
   "provider": "pin-payments",
   "sources": [
-    "pin-payments-cards-api-openapi.yml",
-    "pin-payments-charges-api-openapi.yml",
-    "pin-payments-customers-api-openapi.yml",
-    "pin-payments-refunds-api-openapi.yml"
+    "_original/pin-payments-openapi.yaml"
   ],
   "outputs": [
     "pin-payments-cards-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "pin-payments-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "pin-payments-cards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pin-payments-charges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pin-payments-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pin-payments-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

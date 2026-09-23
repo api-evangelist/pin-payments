@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Pin Payments Cards Charges API
+  title: Pin Payments Charges API
   description: A complete payments solution, built for speed and simplicity. The Pin Payments API enables you to charge cards, manage customers, issue refunds, store cards, and run subscriptions.
   version: '1.0'
   contact:
@@ -32,6 +32,8 @@ paths:
       responses:
         '201':
           description: Charge created
+      operationId: postCharges
+      x-operation-id-source: derived
     get:
       tags:
       - Charges
@@ -43,6 +45,8 @@ paths:
       responses:
         '200':
           description: A paginated list of charges
+      operationId: getCharges
+      x-operation-id-source: derived
   /charges/search:
     get:
       tags:
@@ -81,6 +85,8 @@ paths:
       responses:
         '200':
           description: A paginated list of matching charges
+      operationId: getChargesSearch
+      x-operation-id-source: derived
   /charges/{charge_token}:
     get:
       tags:
@@ -91,6 +97,8 @@ paths:
       responses:
         '200':
           description: Charge details
+      operationId: getChargesByChargeToken
+      x-operation-id-source: derived
   /charges/{charge_token}/void:
     put:
       tags:
@@ -101,6 +109,8 @@ paths:
       responses:
         '200':
           description: Charge voided
+      operationId: putChargesByChargeTokenVoid
+      x-operation-id-source: derived
   /charges/{charge_token}/capture:
     put:
       tags:
@@ -111,6 +121,8 @@ paths:
       responses:
         '200':
           description: Charge captured
+      operationId: putChargesByChargeTokenCapture
+      x-operation-id-source: derived
   /charges/verify:
     get:
       tags:
@@ -125,6 +137,8 @@ paths:
       responses:
         '200':
           description: Verification result
+      operationId: getChargesVerify
+      x-operation-id-source: derived
 components:
   parameters:
     ChargeToken:
@@ -133,14 +147,14 @@ components:
       required: true
       schema:
         type: string
-    PerPage:
-      in: query
-      name: per_page
-      schema:
-        type: integer
     Page:
       in: query
       name: page
+      schema:
+        type: integer
+    PerPage:
+      in: query
+      name: per_page
       schema:
         type: integer
   schemas:

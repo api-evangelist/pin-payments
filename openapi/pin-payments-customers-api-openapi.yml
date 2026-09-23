@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Pin Payments Cards Customers API
+  title: Pin Payments Customers API
   description: A complete payments solution, built for speed and simplicity. The Pin Payments API enables you to charge cards, manage customers, issue refunds, store cards, and run subscriptions.
   version: '1.0'
   contact:
@@ -31,6 +31,8 @@ paths:
       responses:
         '201':
           description: Customer created
+      operationId: postCustomers
+      x-operation-id-source: derived
     get:
       tags:
       - Customers
@@ -38,6 +40,8 @@ paths:
       responses:
         '200':
           description: A paginated list of customers
+      operationId: getCustomers
+      x-operation-id-source: derived
   /customers/{customer_token}:
     get:
       tags:
@@ -48,6 +52,8 @@ paths:
       responses:
         '200':
           description: Customer details
+      operationId: getCustomersByCustomerToken
+      x-operation-id-source: derived
     put:
       tags:
       - Customers
@@ -57,6 +63,8 @@ paths:
       responses:
         '200':
           description: Customer updated
+      operationId: putCustomersByCustomerToken
+      x-operation-id-source: derived
     delete:
       tags:
       - Customers
@@ -66,6 +74,8 @@ paths:
       responses:
         '204':
           description: Customer deleted
+      operationId: deleteCustomersByCustomerToken
+      x-operation-id-source: derived
   /customers/{customer_token}/charges:
     get:
       tags:
@@ -76,6 +86,8 @@ paths:
       responses:
         '200':
           description: A paginated list of charges
+      operationId: getCustomersByCustomerTokenCharges
+      x-operation-id-source: derived
   /customers/{customer_token}/cards:
     get:
       tags:
@@ -86,6 +98,8 @@ paths:
       responses:
         '200':
           description: A paginated list of cards
+      operationId: getCustomersByCustomerTokenCards
+      x-operation-id-source: derived
     post:
       tags:
       - Customers
@@ -95,6 +109,8 @@ paths:
       responses:
         '201':
           description: Card added
+      operationId: postCustomersByCustomerTokenCards
+      x-operation-id-source: derived
   /customers/{customer_token}/cards/{card_token}:
     delete:
       tags:
@@ -110,6 +126,8 @@ paths:
       responses:
         '204':
           description: Card removed
+      operationId: deleteCustomersByCustomerTokenCardsByCardToken
+      x-operation-id-source: derived
   /customers/{customer_token}/subscriptions:
     get:
       tags:
@@ -120,6 +138,8 @@ paths:
       responses:
         '200':
           description: A paginated list of subscriptions
+      operationId: getCustomersByCustomerTokenSubscriptions
+      x-operation-id-source: derived
   /customers/{customer_token}/subscriptions/{sub_token}:
     delete:
       tags:
@@ -135,6 +155,8 @@ paths:
       responses:
         '200':
           description: Subscription cancelled
+      operationId: deleteCustomersByCustomerTokenSubscriptionsBySubToken
+      x-operation-id-source: derived
 components:
   schemas:
     CustomerCreate:
