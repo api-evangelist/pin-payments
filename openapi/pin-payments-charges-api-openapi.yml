@@ -141,6 +141,11 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
+    PerPage:
+      in: query
+      name: per_page
+      schema:
+        type: integer
     ChargeToken:
       in: path
       name: charge_token
@@ -150,11 +155,6 @@ components:
     Page:
       in: query
       name: page
-      schema:
-        type: integer
-    PerPage:
-      in: query
-      name: per_page
       schema:
         type: integer
   schemas:
