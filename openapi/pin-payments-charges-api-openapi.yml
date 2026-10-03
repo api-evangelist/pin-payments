@@ -146,17 +146,17 @@ components:
       name: per_page
       schema:
         type: integer
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
     ChargeToken:
       in: path
       name: charge_token
       required: true
       schema:
         type: string
-    Page:
-      in: query
-      name: page
-      schema:
-        type: integer
   schemas:
     ChargeCreate:
       type: object
