@@ -158,13 +158,6 @@ paths:
       operationId: deleteCustomersByCustomerTokenSubscriptionsBySubToken
       x-operation-id-source: derived
 components:
-  parameters:
-    CustomerToken:
-      in: path
-      name: customer_token
-      required: true
-      schema:
-        type: string
   schemas:
     CustomerCreate:
       type: object
@@ -188,6 +181,13 @@ components:
           type: object
         card_token:
           type: string
+  parameters:
+    CustomerToken:
+      in: path
+      name: customer_token
+      required: true
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http
