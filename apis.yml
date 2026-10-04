@@ -97,6 +97,9 @@ apis:
   - type: Documentation
     url: https://pinpayments.com/developers/api-reference
 common:
+  - type: CapabilityMap
+    url: capabilities/pin-payments-capability-edges.yml
+    name: Pin Payments Business Capability Map
   - type: AgenticAccess
     url: agentic-access/pin-payments-agentic-access.yml
   - type: DomainSecurity
