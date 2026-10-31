@@ -1,4 +1,4 @@
-# Pin Payments (pin-payments)
+# Pin Payments
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,53 +64,160 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-A complete payments solution, built for speed and simplicity around your unique business needs. The Pin Payments API enables developers to charge cards, manage customers, store payment sources, issue refunds, and run subscriptions through a RESTful JSON interface secured with HTTP Basic authentication.
+Pin Payments (Southern Payment Systems Pty Ltd t/a Pin Payments, ABN 46 154 451 582, Melbourne, Australia; a Fat Zebra company) is an online payment gateway for small businesses and platforms, offering ecommerce, recurring payments, payments for platforms, hosted payment pages and foreign-currency billing. The Pin Payments API enables developers to charge cards, manage customers, store payment sources, issue refunds, and run subscriptions through a RESTful JSON interface secured with HTTP Basic authentication.
 
-**APIs.json:** [apis.yml](https://raw.githubusercontent.com/api-evangelist/pin-payments/refs/heads/main/apis.yml)
+**Areas:** Payments · Cards · Subscription · Refunds · Payment Gateway · Recurring Payments · Ecommerce · Australia
 
-## Scope
+## Pin Payments on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Pin Payments is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/pin-payments/](https://apis.io/providers/pin-payments/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Payments
-- Cards
-- Subscriptions
-- Refunds
+- [Pin Payments Cards API](https://apis.io/apis/pin-payments/pin-payments-cards-api/) — Tokenize and retrieve stored card details.
+- [Pin Payments Charges API](https://apis.io/apis/pin-payments/pin-payments-charges-api/) — Create and manage charges against cards or customers.
+- [Pin Payments Customers API](https://apis.io/apis/pin-payments/pin-payments-customers-api/) — Store customer profiles with payment sources for repeat billing.
+- [Pin Payments Refunds API](https://apis.io/apis/pin-payments/pin-payments-refunds-api/) — Issue and inspect refunds against charges.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-17
-- **Modified:** 2026-04-28
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Pin Payments API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Pin Payments API exposes resources for charges, customers, cards, refunds, and subscriptions. It is a RESTful JSON API authenticated with HTTP Basic using your API key as the username and an empty string as the password. Live and test environments are available at `api.pinpayments.com` and `test-api.pinpayments.com` respectively.
+- [Pin Payments Agentic Access](https://apis.io/agentic-access/pin-payments/pin-payments-agentic-access/)
 
-- **Human URL:** https://pinpayments.com/
-- **Base URL:** `https://api.pinpayments.com/1`
+#### JSON Schema (3)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://pinpayments.com/developers/api-reference)
-- [OpenAPI](openapi/pin-payments-openapi.yaml)
+- [CardCreate](https://apis.io/schemas/pin-payments/pin-payments-card-create/)
+- [ChargeCreate](https://apis.io/schemas/pin-payments/pin-payments-charge-create/)
+- [CustomerCreate](https://apis.io/schemas/pin-payments/pin-payments-customer-create/)
 
-## Common Properties
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Pin Payments Context](https://apis.io/jsonld/pin-payments/pin-payments-context/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Pin Payments Cards API](https://apis.io/collections/pin-payments/open-pin-payments-cards-api/)
+- [Pin Payments Cards Charges API](https://apis.io/collections/pin-payments/open-pin-payments-charges-api/)
+- [Pin Payments Cards Customers API](https://apis.io/collections/pin-payments/open-pin-payments-customers-api/)
+- [Pin Payments Cards Refunds API](https://apis.io/collections/pin-payments/open-pin-payments-refunds-api/)
+
+#### Overlays (4)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Pin Payments Cards Errors Overlay](https://apis.io/overlays/pin-payments/pin-payments-cards-errors-overlay/)
+- [Pin Payments Charges Errors Overlay](https://apis.io/overlays/pin-payments/pin-payments-charges-errors-overlay/)
+- [Pin Payments Customers Errors Overlay](https://apis.io/overlays/pin-payments/pin-payments-customers-errors-overlay/)
+- [Pin Payments Refunds Errors Overlay](https://apis.io/overlays/pin-payments/pin-payments-refunds-errors-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Pin Payments API Rules](https://apis.io/rules/pin-payments/pin-payments-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Pin Payments Authentication](https://apis.io/security/pin-payments/pin-payments-authentication/)
+- [Pin Payments Domain Security](https://apis.io/security/pin-payments/pin-payments-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Pin Payments Plans Pricing](https://apis.io/plans/pin-payments/pin-payments-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Pin Payments Rate Limits](https://apis.io/rate-limits/pin-payments/pin-payments-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Pin Payments Finops](https://apis.io/finops/pin-payments/pin-payments-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://pinpayments.com/)
-- [Documentation](https://pinpayments.com/developers/api-reference)
+- [Documentation](https://pinpayments.com/developers/integration-guides)
+- [Getting started](https://pinpayments.com/support/getting-started)
+- [API reference](https://pinpayments.com/developers/api-reference)
 - [Pricing](https://pinpayments.com/pricing)
-- [Sign Up](https://dashboard.pinpayments.com/sign_up)
-- [Login](https://dashboard.pinpayments.com/sign_in)
-- [Terms of Service](https://pinpayments.com/legals/terms-of-use)
-- [Privacy Policy](https://pinpayments.com/legals/privacy-policy)
+- [Support](https://pinpayments.com/support/contact)
+- [Blog](https://pinpayments.com/blog)
+- [Security](https://pinpayments.com/security)
+- [Terms of service](https://pinpayments.com/terms)
+- [Privacy policy](https://pinpayments.com/privacy)
+- [GitHub](https://github.com/pinpayments)
+- [Status](https://pin.statuspage.io/)
 
-## Maintainers
+## API Evangelist rating
 
-- **FN:** Kin Lane
-- **Email:** kin@apievangelist.com
+**Kin Score 56.5** — strong · rubric 0.24.0 · scored 2026-10-21
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.9 |
+| Contract quality | 56.6 |
+| Contract governance | 79.1 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 77.9 |
+| Access clarity | 22.4 |
+
+**Agent readiness 30.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 27.7** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/pin-payments/](https://apis.io/providers/pin-payments/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Pin Payments: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/pin-payments/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
